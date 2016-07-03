@@ -1,9 +1,5 @@
 defmodule MyList do
-  def span([], _, _), do: []
-  def span([head | tail], from, to) when head >= from and head <= to do
-    [head | span(tail, from, to)]
-  end
-  def span([head | tail], from, to) when head < from or head > to do
-    span(tail, from, to)
-  end
+  def span(from, to) when from == to, do: [from]
+  def span(from, to) when from == to - 1, do: [from, to]
+  def span(from, to), do: [from | span(from + 1, to)]                                     
 end
